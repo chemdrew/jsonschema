@@ -1,3 +1,52 @@
+forked version to implement the hyper-schema `readOnly` property
+
+use case is for api request validation
+
+add this into the test suite
+`readOnly.json`
+```[
+    {
+        "description": "readOnly validation",
+        "schema": {
+            "properties": {
+                "foo": {},
+                "bar": {}
+            },
+            "readOnly": ["foo"]
+        },
+        "tests": [
+            {
+                "description": "present readOnly property is invalid",
+                "data": {"foo": 1},
+                "valid": false
+            },
+            {
+                "description": "non-present readOnly property is valid",
+                "data": {"bar": 1},
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "readOnly default validation",
+        "schema": {
+            "properties": {
+                "foo": {}
+            }
+        },
+        "tests": [
+            {
+                "description": "not readOnly by default",
+                "data": {"foo": 1},
+                "valid": true
+            }
+        ]
+    }
+]
+```
+
+-------
+
 [![Build Status](https://secure.travis-ci.org/tdegrunt/jsonschema.svg)](http://travis-ci.org/tdegrunt/jsonschema)
 
 # jsonschema
