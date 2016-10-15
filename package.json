@@ -1,13 +1,10 @@
 {
-  "author": "Tom de Grunt <tom@degrunt.nl>",
-  "name": "jsonschema",
-  "version": "1.1.0",
+  "author": "Andrew Pratt",
+  "name": "jsonschema-readonly",
+  "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
   },
-  "contributors": [
-    { "name" : "Austin Wright" }
-  ],
   "main": "./lib",
   "typings": "./lib/index.d.ts",
   "devDependencies": {
@@ -23,13 +20,14 @@
     "schema",
     "jsonschema",
     "validator",
-    "validation"
+    "validation",
+    "readonly"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/tdegrunt/jsonschema.git"
+    "url": "git://github.com/chemdrew/jsonschema.git"
   },
-  "description": "A fast and easy to use JSON Schema validator",
+  "description": "A fast and easy to use JSON Schema validator - forked with readonly added",
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec"
   }
