@@ -1,4 +1,35 @@
-forked version to implement the hyper-schema `readOnly` property
+```
+var Validator = require('jsonschema').Validator;
+var ValidationResult = require('jsonschema').ValidationResult;
+var validator = new Validator();
+
+validators.readOnly = function validateReadOnly (instance, schema, options, ctx) {
+  var result = new ValidatorResult(instance, schema, options, ctx);
+  if (instance && schema.readOnly === true) {
+    result.addError({
+      name: 'readOnly',
+      message: "is readOnly"
+    });
+  } else if (instance && typeof instance==='object' && Array.isArray(schema.readOnly)) {
+    schema.readOnly.forEach(function(n){
+      if(instance[n]){
+        result.addError({
+          name: 'readOnly',
+          argument: n,
+          message: "read only property " + JSON.stringify(n),
+        });
+      }
+    });
+  }
+  return result;
+};
+```
+
+above is what I added to this fork and should be used for validating readOnly attributes
+
+
+
+forked version to implement the hyper-schema `readOnly` attribute
 
 use case is for api request validation
 
